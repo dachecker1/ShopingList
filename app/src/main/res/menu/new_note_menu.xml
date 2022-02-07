@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="@string/save"
+        android:id="@+id/save"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_save"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="@string/bold"
+        android:id="@+id/bold"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_bold"
+        app:showAsAction="ifRoom"/>
+
+    <item android:title="@string/color"
+        android:id="@+id/color"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_color"
+        app:showAsAction="ifRoom"/>
+
+</menu>
