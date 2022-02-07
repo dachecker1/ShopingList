@@ -1,5 +1,6 @@
 package com.vk.dachecker.shopinglist.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,15 +16,13 @@ import com.vk.dachecker.shopinglist.dialogs.NewListDialog
 import com.vk.dachecker.shopinglist.fragments.FragmentManager
 import com.vk.dachecker.shopinglist.fragments.NoteFragment
 import com.vk.dachecker.shopinglist.fragments.ShopListNamesFragment
+import com.vk.dachecker.shopinglist.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity(), NewListDialog.Listener{
     private lateinit var binding : ActivityMainBinding
     private var iAd: InterstitialAd? = null
     private var adShowCounter = 0
     private var adShowCounterMax = 3
-
-
-
 
 
 
@@ -85,20 +84,16 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
                 R.id.settings -> {
                     showInterAd(object : AdListener{
                         override fun onFinish() {
-                            Log.d("MyTag", "${R.id.settings}")
+                            startActivity(Intent(this@MainActivity, SettingsActivity::class.java))
                         }
-
                     })
-
                 }
                 R.id.notes -> {
                     showInterAd(object : AdListener{
                         override fun onFinish() {
                             FragmentManager.setFragment(NoteFragment.newInstance(), this@MainActivity)
                         }
-
                     })
-
                 }
                 R.id.shop_list -> {
                     FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)

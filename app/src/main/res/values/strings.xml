@@ -24,6 +24,16 @@
     <string name="item_info">Item info</string>
     <string name="update_list_item">Update list item</string>
     <string name="inter_ad_id">ca-app-pub-8884831632096451/4850213879</string>
+    <string name="general">General</string>
+    <string name="choose_note_style">Choose note style</string>
+    <string name="choose_time_format">Choose time format</string>
+    <string name="remove_ads">Remove Ads</string>
+    <string name="remove_ads_summary">Remove all ads from this app</string>
+    <string name="choose_theme">Choose theme</string>
+    <string name="theme_settings">Theme settings</string>
+    <string name="note_text_settings">Note text settings</string>
+    <string name="title_text_size">Title text size</string>
+    <string name="content_text_size">Content text size</string>
 
 
 </resources>

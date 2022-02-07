@@ -6,6 +6,7 @@
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/drawable/ic_baseline_color_lens_24.xml" value="0.3203125" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/layout/activity_main.xml" value="0.30416666666666664" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/layout/activity_new_note.xml" value="0.48888888888888893" />
+        <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/layout/activity_settings.xml" value="0.5333333333333333" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/layout/activity_shop_list.xml" value="0.2824074074074074" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/layout/delete_dialog.xml" value="0.4" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/layout/edit_action_layout.xml" value="0.2824074074074074" />
@@ -20,6 +21,7 @@
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/menu/bottom_menu.xml" value="0.30416666666666664" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/menu/new_note_menu.xml" value="0.5333333333333333" />
         <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/menu/shop_list_menu.xml" value="0.2977777777777778" />
+        <entry key="..\:/Users/NivinskiyAV/AndroidStudioProjects/ShopingLIst/app/src/main/res/xml/settings_preference.xml" value="0.5333333333333333" />
       </map>
     </option>
   </component>

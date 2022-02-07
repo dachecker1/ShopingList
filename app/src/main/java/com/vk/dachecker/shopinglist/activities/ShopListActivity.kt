@@ -235,12 +235,22 @@ class ShopListActivity : AppCompatActivity(), ShopListItemAdapter.Listener {
         })
     }
 
+    @InternalCoroutinesApi
     private fun saveItemCount(){
-        val tempShopListName
+        var checkedItemCounter = 0
+        adapter?.currentList?.forEach {
+            if(it.itemChecked) checkedItemCounter++
+        }
+        val tempShopListName = shopListNameItem?.copy(
+            allItemCounter = adapter?.itemCount!!,
+            checkedItemsCounter = checkedItemCounter
+        )
+        mainViewModel.updateListName(tempShopListName!!)
     }
 
+    @InternalCoroutinesApi
     override fun onBackPressed() {
-
+        saveItemCount()
         super.onBackPressed()
     }
 }

@@ -10,6 +10,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="red_progress_bar">#F63F3F</color>
+    <color name="green_progress_bar">#90CC3A</color>
+
     <color name="picker_red">#FA4040</color>
     <color name="picker_green">#A0F328</color>
     <color name="picker_blue">#06ECD2</color>
