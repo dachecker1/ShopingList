@@ -13,7 +13,7 @@
             android:title="@string/choose_note_style"
             app:useSimpleSummaryProvider="true" />
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="hh:mm:ss - yyyy/MM/dd"
             android:entries="@array/time_format_array"
             android:entryValues="@array/time_format_values"
             android:icon="@drawable/ic_time_format"
@@ -39,7 +39,7 @@
     <PreferenceCategory android:title="@string/note_text_settings">
 
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="16"
             android:entries="@array/text_size_array"
             android:entryValues="@array/text_size_values"
             android:icon="@drawable/ic_text_size"
@@ -47,7 +47,7 @@
             android:title="@string/title_text_size"
             app:useSimpleSummaryProvider="true" />
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="14"
             android:entries="@array/text_size_array"
             android:entryValues="@array/text_size_values"
             android:icon="@drawable/ic_text_size"

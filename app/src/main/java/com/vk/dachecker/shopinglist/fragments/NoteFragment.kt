@@ -2,6 +2,7 @@ package com.vk.dachecker.shopinglist.fragments
 
 import android.app.Activity
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vk.dachecker.shopinglist.activities.MainApp
 import com.vk.dachecker.shopinglist.activities.NewNoteActivity
@@ -23,6 +25,7 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
     private lateinit var binding: FragmentNoteBinding
     private lateinit var editLauncher: ActivityResultLauncher<Intent>
     private lateinit var adapter: NoteAdapter
+    private lateinit var defPref: SharedPreferences
 
     @InternalCoroutinesApi
     private val mainViewModel: MainViewModel by activityViewModels {
@@ -32,7 +35,6 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
         //запускаем слушатель записи данных
         editLauncher.launch(Intent(activity, NewNoteActivity::class.java))
     }
-
 
     @InternalCoroutinesApi
     override fun onCreateView(
@@ -45,11 +47,10 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
         return binding.root
     }
 
-
-
     @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("MyTag", "запустился onViewCreated NoteFragment. Запускается initRcView и observer")
         initRcView()
         observer()
     }
@@ -65,13 +66,10 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
                 } else {
                     mainViewModel.insertNote(it.data?.getSerializableExtra(NEW_NOTE_KEY) as NoteItem)
                 }
-
                 Log.d("MyTag", "title : ${it.data?.getSerializableExtra(NEW_NOTE_KEY).toString()}")
-
             }
         }
     }
-    //метод, который следит за изменениями
     @InternalCoroutinesApi
     private fun observer(){
         mainViewModel.allNotes.observe(viewLifecycleOwner){
@@ -79,10 +77,10 @@ class NoteFragment : BaseFragment(), NoteAdapter.Listener {
         }
     }
 
-
     private fun initRcView() = with(binding){
-        adapter = NoteAdapter(this@NoteFragment)
         rcViewNote.layoutManager = LinearLayoutManager(activity)
+        defPref = PreferenceManager.getDefaultSharedPreferences(activity)
+        adapter = NoteAdapter(this@NoteFragment, defPref)
         rcViewNote.adapter = adapter
     }
 
