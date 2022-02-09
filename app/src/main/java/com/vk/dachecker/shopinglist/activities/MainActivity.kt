@@ -21,6 +21,7 @@ import com.vk.dachecker.shopinglist.settings.SettingsActivity
 class MainActivity : AppCompatActivity(), NewListDialog.Listener{
     private lateinit var binding : ActivityMainBinding
     private var iAd: InterstitialAd? = null
+    private var currentMenuItemId = R.id.shop_list
     private var adShowCounter = 0
     private var adShowCounterMax = 3
 
@@ -91,11 +92,13 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
                 R.id.notes -> {
                     showInterAd(object : AdListener{
                         override fun onFinish() {
+                            currentMenuItemId = R.id.notes
                             FragmentManager.setFragment(NoteFragment.newInstance(), this@MainActivity)
                         }
                     })
                 }
                 R.id.shop_list -> {
+                    currentMenuItemId = R.id.shop_list
                     FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
                 }
                 R.id.new_item -> {
@@ -105,6 +108,11 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
             }
             true
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.bNav.selectedItemId = currentMenuItemId
     }
 
     override fun onClick(name: String) {
