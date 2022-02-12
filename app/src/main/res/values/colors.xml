@@ -21,4 +21,8 @@
     <color name="picker_orange">#F18104</color>
     <color name="grey">#494948</color>
     <color name="grey_light">#9F9F9E</color>
+    <color name="blue_light">#35F8F8</color>
+    <color name="blue_dark">#1392A3</color>
+    <color name="red_light">#FA5252</color>
+    <color name="red_dark">#F61414</color>
 </resources>

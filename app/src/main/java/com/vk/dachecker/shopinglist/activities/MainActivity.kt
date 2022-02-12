@@ -1,9 +1,11 @@
 package com.vk.dachecker.shopinglist.activities
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.preference.PreferenceManager
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -21,6 +23,8 @@ import com.vk.dachecker.shopinglist.settings.SettingsActivity
 class MainActivity : AppCompatActivity(), NewListDialog.Listener{
     private lateinit var binding : ActivityMainBinding
     private var iAd: InterstitialAd? = null
+    private lateinit var defPref : SharedPreferences
+    private var currentTheme = ""
     private var currentMenuItemId = R.id.shop_list
     private var adShowCounter = 0
     private var adShowCounterMax = 3
@@ -28,10 +32,12 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        defPref = PreferenceManager.getDefaultSharedPreferences(this)
+        currentTheme = defPref.getString("theme_key", "blue").toString()
+        setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
         loadInterAd()
         setBottomNavListener()
@@ -113,10 +119,19 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
     override fun onResume() {
         super.onResume()
         binding.bNav.selectedItemId = currentMenuItemId
+        if(defPref.getString("theme_key", "blue") != currentTheme) recreate()
     }
 
     override fun onClick(name: String) {
         Log.d("MyTag", "Name $name")
+    }
+
+    private fun getSelectedTheme() : Int{
+        return if(defPref.getString("theme_key", "blue") == "blue"){
+            R.style.Theme_ShoppingListBlue
+        } else {
+            R.style.Theme_ShoppingListRed
+        }
     }
 
     interface AdListener{

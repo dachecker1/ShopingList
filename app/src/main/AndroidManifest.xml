@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ShopingLIst">
+        android:theme="@style/Theme.ShoppingListBlue">
         <activity
             android:name=".settings.SettingsActivity"
             android:exported="false" />
@@ -21,7 +21,7 @@
         <activity
             android:name=".activities.NewNoteActivity"
             android:exported="false"
-            android:theme="@style/Theme.NewNote"
+            android:theme="@style/Theme.NewNoteBlue"
             android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".activities.MainActivity"

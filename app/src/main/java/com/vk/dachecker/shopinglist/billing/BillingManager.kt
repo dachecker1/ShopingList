@@ -84,6 +84,10 @@ class BillingManager(val activity: AppCompatActivity) {
         }
     }
 
+    fun closeConnection(){
+        bClient?.endConnection()
+    }
+
     companion object {
         //идентификатор должен совпадать с Play Console
         const val REMOVE_AD_ITEM = "remove_ad_item_id" //внимательно.

@@ -22,13 +22,14 @@
             app:useSimpleSummaryProvider="true" />
         <Preference
             android:icon="@drawable/ic_remove_ads"
+            android:key="remove_ads_key"
             android:summary="@string/remove_ads_summary"
             android:title="@string/remove_ads" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/theme_settings">
 
         <ListPreference
-            android:defaultValue="1"
+            android:defaultValue="blue"
             android:entries="@array/choose_theme_array"
             android:entryValues="@array/choose_theme_values"
             android:icon="@drawable/ic_theme_style"
