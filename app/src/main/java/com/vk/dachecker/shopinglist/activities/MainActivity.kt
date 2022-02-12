@@ -28,26 +28,27 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
     private var currentTheme = ""
     private var currentMenuItemId = R.id.shop_list
     private var adShowCounter = 0
-    private var adShowCounterMax = 3
+    private var adShowCounterMax = 2
     private lateinit var pref : SharedPreferences
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
-//        currentTheme = defPref.getString("theme_key", "blue").toString()
+        currentTheme = defPref.getString("theme_key", "blue").toString()
         setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
         pref = getSharedPreferences(BillingManager.MAIN_PREF, MODE_PRIVATE)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
-        if(pref.getBoolean(BillingManager.REMOVE_ADS_KEY, false)) loadInterAd()
         setBottomNavListener()
+        if(!pref.getBoolean(BillingManager.REMOVE_ADS_KEY, false)) loadInterAd()
+
     }
 
     private fun showInterAd(adListener: AdListener){
-        if(iAd != null && adShowCounter>adShowCounterMax){
+        if(iAd != null){
             iAd?.fullScreenContentCallback = object : FullScreenContentCallback(){
                 override fun onAdDismissedFullScreenContent() { //пользователь закрыл объявление
                     iAd = null

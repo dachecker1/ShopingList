@@ -92,7 +92,6 @@ class BillingManager(val activity: AppCompatActivity) {
                     } else {
                         savePref(false)
                         Toast.makeText(activity, "Покупка не удалась", Toast.LENGTH_SHORT)
-
                     }
                 }
             }

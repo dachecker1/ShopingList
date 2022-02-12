@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShopingLIst</string>
+    <string name="app_name">ShoppingList</string>
     <string name="settings">Settings</string>
     <string name="notes">Notes</string>
     <string name="shop_list">Shop List</string>
@@ -23,7 +23,7 @@
     <string name="name">Name</string>
     <string name="item_info">Item info</string>
     <string name="update_list_item">Update list item</string>
-    <string name="inter_ad_id">ca-app-pub-8884831632096451/4850213879</string>
+    <string name="inter_ad_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="general">General</string>
     <string name="choose_note_style">Choose note style</string>
     <string name="choose_time_format">Choose time format</string>
