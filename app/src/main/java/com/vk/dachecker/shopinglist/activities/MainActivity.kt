@@ -13,6 +13,7 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.vk.dachecker.shopinglist.R
+import com.vk.dachecker.shopinglist.billing.BillingManager
 import com.vk.dachecker.shopinglist.databinding.ActivityMainBinding
 import com.vk.dachecker.shopinglist.dialogs.NewListDialog
 import com.vk.dachecker.shopinglist.fragments.FragmentManager
@@ -28,18 +29,20 @@ class MainActivity : AppCompatActivity(), NewListDialog.Listener{
     private var currentMenuItemId = R.id.shop_list
     private var adShowCounter = 0
     private var adShowCounterMax = 3
+    private lateinit var pref : SharedPreferences
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         defPref = PreferenceManager.getDefaultSharedPreferences(this)
-        currentTheme = defPref.getString("theme_key", "blue").toString()
+//        currentTheme = defPref.getString("theme_key", "blue").toString()
         setTheme(getSelectedTheme())
         super.onCreate(savedInstanceState)
+        pref = getSharedPreferences(BillingManager.MAIN_PREF, MODE_PRIVATE)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         FragmentManager.setFragment(ShopListNamesFragment.newInstance(), this)
-        loadInterAd()
+        if(pref.getBoolean(BillingManager.REMOVE_ADS_KEY, false)) loadInterAd()
         setBottomNavListener()
     }
 

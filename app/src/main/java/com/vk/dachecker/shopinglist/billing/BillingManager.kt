@@ -1,5 +1,7 @@
 package com.vk.dachecker.shopinglist.billing
 
+import android.content.Context
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.billingclient.api.*
 
@@ -15,6 +17,13 @@ class BillingManager(val activity: AppCompatActivity) {
             .setListener(getPurchaseListener())
             .enablePendingPurchases()
             .build()
+    }
+
+    private fun savePref(isPurchase: Boolean) {
+        val pref = activity.getSharedPreferences(MAIN_PREF, Context.MODE_PRIVATE)
+        val editor = pref.edit()
+        editor.putBoolean(REMOVE_ADS_KEY, isPurchase)
+        editor.apply()
     }
 
     fun startConnection() {
@@ -77,6 +86,12 @@ class BillingManager(val activity: AppCompatActivity) {
                     .setPurchaseToken(purchase.purchaseToken).build()
                 bClient?.acknowledgePurchase(acParams) {
                     if (it.responseCode == BillingClient.BillingResponseCode.OK) {
+                        savePref(true)
+                        Toast.makeText(activity, "Покупка произведена успешно", Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        savePref(false)
+                        Toast.makeText(activity, "Покупка не удалась", Toast.LENGTH_SHORT)
 
                     }
                 }
@@ -84,12 +99,14 @@ class BillingManager(val activity: AppCompatActivity) {
         }
     }
 
-    fun closeConnection(){
+    fun closeConnection() {
         bClient?.endConnection()
     }
 
     companion object {
         //идентификатор должен совпадать с Play Console
         const val REMOVE_AD_ITEM = "remove_ad_item_id" //внимательно.
+        const val MAIN_PREF = "main pref"
+        const val REMOVE_ADS_KEY = "remove ads key"
     }
 }
