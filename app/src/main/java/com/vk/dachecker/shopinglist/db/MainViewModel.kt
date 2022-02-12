@@ -59,8 +59,6 @@ class MainViewModel(database: MainDataBase) : ViewModel() {
         return dao.getAllLibraryItems(name).isNotEmpty()
     }
 
-
-
     class MainViewModelfactory(val database: MainDataBase) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MainViewModel::class.java)){
